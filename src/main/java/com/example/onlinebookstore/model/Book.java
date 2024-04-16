@@ -6,17 +6,26 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import java.util.Currency;
-import lombok.Data;
+import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.Setter;
 
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = "id")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Data
-@Table(name = "book")
+@Table(name = "books")
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
     @NonNull
     @Column(name = "title")
@@ -28,13 +37,9 @@ public class Book {
     private String isbn;
     @Column(name = "price")
     @NonNull
-    private Currency price;
+    private BigDecimal price;
     @Column(name = "description")
     private String description;
     @Column(name = "cover_image")
     private String coverImage;
-
-    public Book() {
-
-    }
 }

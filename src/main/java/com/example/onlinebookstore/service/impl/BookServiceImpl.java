@@ -4,7 +4,7 @@ import com.example.onlinebookstore.model.Book;
 import com.example.onlinebookstore.service.BookService;
 import java.util.List;
 
-public class BookServiceImp implements BookService {
+public class BookServiceImpl implements BookService {
     @Override
     public Book save(Book book) {
         return null;
