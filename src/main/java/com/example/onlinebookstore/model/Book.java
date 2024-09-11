@@ -13,10 +13,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = "id")
+@SQLDelete(sql = "UPDATE books SET is_deleted = true WHERE id = ?")
+@Where(clause = "is_deleted = false")
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -40,4 +44,6 @@ public class Book {
     private String description;
     @Column(name = "cover_image")
     private String coverImage;
+    @Column(name = "is_deleted")
+    private Boolean isDeleted = false;
 }
