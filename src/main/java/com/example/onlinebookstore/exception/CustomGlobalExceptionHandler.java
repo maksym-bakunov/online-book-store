@@ -23,6 +23,12 @@ public class CustomGlobalExceptionHandler {
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(RegistrationException.class)
+    public ResponseEntity<String> handleValidationExceptions(
+            RegistrationException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
     private String getErrorMessage(ObjectError e) {
         String defaultMessage = e.getDefaultMessage();
         return (e instanceof FieldError fieldError) ? fieldError.getField() + " " + defaultMessage
