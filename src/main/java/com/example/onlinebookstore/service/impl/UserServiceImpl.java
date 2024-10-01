@@ -4,6 +4,7 @@ import com.example.onlinebookstore.dto.UserDto;
 import com.example.onlinebookstore.dto.UserRegistrationRequestDto;
 import com.example.onlinebookstore.exception.RegistrationException;
 import com.example.onlinebookstore.mapper.UserMapper;
+import com.example.onlinebookstore.model.User;
 import com.example.onlinebookstore.repository.UserRepository;
 import com.example.onlinebookstore.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDto register(UserRegistrationRequestDto userRegistrationRequestDto)
             throws RegistrationException {
-        if (userRepository.findByEmail(userRegistrationRequestDto.getEmail()).isPresent()) {
+        if (userRepository.existsByEmail(userRegistrationRequestDto.getEmail())) {
             throw new RegistrationException(CAN_NOT_REGISTER_USER);
         }
 
-        return userMapper
-                .toDto(userRepository.save(userMapper.toModel(userRegistrationRequestDto)));
+        User user = userMapper.toModel(userRegistrationRequestDto);
+        return userMapper.toDto(userRepository.save(user));
     }
 }

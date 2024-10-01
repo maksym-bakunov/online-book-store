@@ -26,7 +26,7 @@ public class CustomGlobalExceptionHandler {
     @ExceptionHandler(RegistrationException.class)
     public ResponseEntity<String> handleValidationExceptions(
             RegistrationException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
 
     private String getErrorMessage(ObjectError e) {
