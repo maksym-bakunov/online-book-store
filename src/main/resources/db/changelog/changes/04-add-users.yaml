@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-users
+      author: mpbakunov
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: bob.doe@example.com
+              - column:
+                  name: password
+                  value: 123456
+              - column:
+                  name: first_name
+                  value: Bob
+              - column:
+                  name: last_name
+                  value: Doe
+              - column:
+                  name: shipping_address
+                  value: 124 Main St, City, Country
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: alice.doe@example.com
+              - column:
+                  name: password
+                  value: 123457
+              - column:
+                  name: first_name
+                  value: Alice
+              - column:
+                  name: last_name
+                  value: Doe
+              - column:
+                  name: shipping_address
+                  value: 125 Main St, City, Country

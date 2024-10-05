@@ -1,4 +1,4 @@
-package com.example.onlinebookstore.dto;
+package com.example.onlinebookstore.dto.user;
 
 import lombok.Data;
 
