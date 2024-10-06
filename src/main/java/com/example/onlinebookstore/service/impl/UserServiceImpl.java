@@ -10,7 +10,7 @@ import com.example.onlinebookstore.model.User;
 import com.example.onlinebookstore.repository.RoleRepository;
 import com.example.onlinebookstore.repository.UserRepository;
 import com.example.onlinebookstore.service.UserService;
-import java.util.List;
+import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,22 +32,12 @@ public class UserServiceImpl implements UserService {
         }
 
         User user = userMapper.toModel(userRegistrationRequestDto);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(userRegistrationRequestDto.getPassword()));
         Role role = roleRepository.findByName(Role.RoleName.USER)
                 .orElseThrow(() -> new EntityNotFoundException("Can't find a role "
                         + Role.RoleName.USER));
-        user.getRoles().add(role);
+        user.setRoles(Set.of(role));
 
         return userMapper.toDto(userRepository.save(user));
-    }
-
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    }
-
-    @Override
-    public void saveAll(List<User> userList) {
-        userRepository.saveAll(userList);
     }
 }
