@@ -1,5 +1,6 @@
 package com.example.onlinebookstore.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,7 +11,6 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,6 +35,7 @@ public class User implements UserDetails {
     private Long id;
     @NotBlank
     @Email
+    @Column(unique = true)
     private String email;
     @NotBlank
     private String password;
@@ -50,7 +51,6 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    @NotEmpty
     private Set<Role> roles = new HashSet<>();
 
     @Override
