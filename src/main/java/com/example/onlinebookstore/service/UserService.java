@@ -1,7 +1,7 @@
 package com.example.onlinebookstore.service;
 
-import com.example.onlinebookstore.dto.UserDto;
-import com.example.onlinebookstore.dto.UserRegistrationRequestDto;
+import com.example.onlinebookstore.dto.user.UserDto;
+import com.example.onlinebookstore.dto.user.UserRegistrationRequestDto;
 import com.example.onlinebookstore.exception.RegistrationException;
 
 public interface UserService {
