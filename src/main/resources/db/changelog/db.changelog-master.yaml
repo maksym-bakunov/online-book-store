@@ -13,7 +13,3 @@ databaseChangeLog:
       file: db/changelog/changes/06-create-users-roles-table.yaml
   - include:
       file: db/changelog/changes/07-add-users-roles-table.yaml
-  - include:
-      file: db/changelog/changes/08-add-default-users-if-not-exist.yaml
-  - include:
-      file: db/changelog/changes/09-update-users-password.yaml

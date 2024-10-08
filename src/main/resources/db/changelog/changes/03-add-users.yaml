@@ -18,36 +18,24 @@ databaseChangeLog:
         - insert:
             tableName: users
             columns:
-              - column:
-                  name: email
-                  value: bob.doe@example.com
-              - column:
-                  name: password
-                  value: '123456'
-              - column:
-                  name: first_name
-                  value: Bob
-              - column:
-                  name: last_name
-                  value: Doe
-              - column:
-                  name: shipping_address
-                  value: 124 Main St, City, Country
+              - column: {name: email, value: 'bob.doe@example.com'}
+              - column: {name: password, value: '$2a$10$leuUXSGLADiZtIyZBZBDOO/qeXgo2r1QW9Ne7M4DNiuFYruOGdCqW'}
+              - column: {name: first_name, value: 'Bob'}
+              - column: {name: last_name, value: 'Doe'}
+              - column: {name: shipping_address, value: '124 Main St, City, Country'}
         - insert:
             tableName: users
             columns:
-              - column:
-                  name: email
-                  value: alice.doe@example.com
-              - column:
-                  name: password
-                  value: '123457'
-              - column:
-                  name: first_name
-                  value: Alice
-              - column:
-                  name: last_name
-                  value: Doe
-              - column:
-                  name: shipping_address
-                  value: 125 Main St, City, Country
+              - column: {name: email, value: 'alice.doe@example.com'}
+              - column: {name: password, value: '$2a$10$xzkfDFPZm8pWH1M6hZWwNOcdW5t77hfmwb6MqPe1gRx4M01EtyP6m'}
+              - column: {name: first_name, value: 'Alice'}
+              - column: {name: last_name, value: 'Doe'}
+              - column: {name: shipping_address, value: '125 Main St, City, Country'}
+        - insert:
+            tableName: users
+            columns:
+              - column: {name: email, value: 'admin@skyline.com'}
+              - column: {name: password, value: '$2a$10$H00mdLgf7BjrzWpYhz3TLu.LH5lZ74HjXnTEGDDfZRbwtS/hrBiMC'}
+              - column: {name: first_name, value: 'admin'}
+              - column: {name: last_name, value: 'admin'}
+              - column: {name: shipping_address, value: '1 Main St, City, Country'}

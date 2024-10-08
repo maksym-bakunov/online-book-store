@@ -6,6 +6,9 @@ databaseChangeLog:
               - sql:
                     sql: |
                         INSERT INTO users_roles (user_id, role_id)
-                        SELECT u.id, r.id
-                        FROM users u, roles r
-                        WHERE r.name = 'USER';
+                        SELECT u.id, 
+                               (CASE 
+                                   WHEN u.email = 'admin@skyline.com' THEN (SELECT id FROM roles WHERE name = 'ADMIN')
+                                   ELSE (SELECT id FROM roles WHERE name = 'USER')
+                                END)
+                        FROM users u;
